@@ -12,14 +12,13 @@ InkWell movieItem(Movie movieItem, context)
         MaterialPageRoute(builder: (context) => reviewsPage(movieItem)));
     },
     child: Container(
-      padding: EdgeInsets.all(9),
 
       child: Column(
 
         children: [
           Expanded(
             child: ClipRRect(
-                borderRadius: BorderRadius.circular(14.0),
+                borderRadius: BorderRadius.circular(13.0),
                 child: Image.asset("assets/images/movies.jpg",
                     height: MediaQuery.of(context).size.height/8, width: MediaQuery.of(context).size.width/16)
             ),
@@ -35,27 +34,24 @@ InkWell movieItem(Movie movieItem, context)
             ),
           ),
 
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Expanded(
-                    child: Text(d.toString() + "min",
-                      textAlign: TextAlign.center,
-                      style:
-                      TextStyle(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 14),
-                    ),
-                ),
-
-                Expanded(
-                  child: Text(movieItem.release??" ",
+          Row(
+            children: [
+              Expanded(
+                  child: Text(d.toString() + "min",
                     textAlign: TextAlign.center,
                     style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 14),
                   ),
-                )
-              ],
-            ),
+              ),
+
+              Expanded(
+                child: Text(movieItem.release??" ",
+                  textAlign: TextAlign.center,
+                  style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 14),
+                ),
+              )
+            ],
           )
         ],
       ),

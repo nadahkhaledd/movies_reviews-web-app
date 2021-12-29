@@ -51,20 +51,33 @@ class _reviewsPageState extends State<reviewsPage> {
                         child: Image.asset("assets/images/movies.jpg",
                             height: MediaQuery.of(context).size.height/4, width: MediaQuery.of(context).size.width/8)
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        widget.movie.name??" ",
-                        textAlign: TextAlign.center,
-                        style:
-                        TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20),
-                      ),
-                    ),
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            widget.movie.name??" ",
+                            textAlign: TextAlign.center,
+                            style:
+                            TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            widget.movie.release??" ",
+                            textAlign: TextAlign.center,
+                            style:
+                            TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 17),
+                          ),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Text("Reviews",
                   textAlign: TextAlign.start,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Colors.blueGrey),),
@@ -87,7 +100,7 @@ class _reviewsPageState extends State<reviewsPage> {
                           padding: const EdgeInsets.all(8),
                           shrinkWrap: true,
                           itemBuilder: (buildContext, index) =>
-                              Expanded(child: reviewItem(reviewsRelated[index], context)),
+                              reviewItem(reviewsRelated[index], context),
                           itemCount: reviewsRelated.length,
                         ),
                       );

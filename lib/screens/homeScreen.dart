@@ -21,6 +21,11 @@ class _homeScreenState extends State<homeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {  },
+        isExtended: true, 
+        label: Text("Add a movie"),
+      ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Center(
@@ -31,7 +36,7 @@ class _homeScreenState extends State<homeScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 45, bottom: 15, left: 20, right: 20),
+        padding: const EdgeInsets.only( left: 20, right: 20),
         child: Container(
           child: FutureBuilder<MoviesResponse>(
             future: moviesFuture,
