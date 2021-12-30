@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:movies_reviews/models/MoviesResponse.dart';
+import 'package:movies_reviews/models/Review.dart';
 import 'package:movies_reviews/models/ReviewsResponse.dart';
 
 Future<MoviesResponse> getAllMovies() async {
@@ -24,6 +25,57 @@ Future<ReviewsResponse> getAllReviews() async {
     throw Exception(response.body);
   }
 }
+
+Future<Review> updateReview(Review review) async {
+  final uri = Uri.http("kerols843-001-site1.gtempurl.com", "/api/Review/put");
+  final response = await http.put(uri, body: jsonEncode(review), headers: <String, String>{
+    'Content-Type': 'application/json; charset=UTF-8'});
+
+  if(response.statusCode == 200)
+  {
+    return Review.fromJsonMap(jsonDecode(response.body));
+  }
+  else
+  {
+    throw Exception(response.body);
+  }
+}
+
+Future<Review> addReview(Review review) async
+{
+  final uri = Uri.http("kerols843-001-site1.gtempurl.com", "/api/Review/post");
+  final response = await http.post(uri, body: jsonEncode(review), headers: <String, String>{
+    'Content-Type': 'application/json; charset=UTF-8'});
+
+  if(response.statusCode == 200)
+  {
+    return Review.fromJsonMap(jsonDecode(response.body));
+  }
+  else {
+    throw Exception(response.body);
+  }
+}
+
+Future<Review> deleteReview(int id) async{
+  final uri = Uri.http("kerols843-001-site1.gtempurl.com", "/api/Review/delete", {"id": id.toString()});
+  final response = await http.delete(uri, headers: <String, String>{
+  'Content-Type': 'application/json; charset=UTF-8'});
+
+  if(response.statusCode == 200)
+    {
+      print("success delete");
+      return Review.fromJsonMap(jsonDecode(response.body));
+    }
+  else
+    {
+      print("failedd");
+      throw Exception(response.body);
+    }
+}
+
+
+
+
 
 
 

@@ -24,7 +24,20 @@ class _reviewsPageState extends State<reviewsPage> {
   @override
   Widget build(BuildContext context) {
     List<Review> reviewsRelated = [];
+    String datetime = DateTime.now().toIso8601String();
+    Review r = new Review( id: 0,date:datetime, movieId: widget.movie.id, movie: widget.movie, body: "enter review");
     return Scaffold(
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+                setState(() {
+                  //reviewsRelated.add(r);
+                  addReview(r);
+
+                });
+          },
+          isExtended: true,
+          label: Text("Add a review"),
+        ),
         appBar: AppBar(
           automaticallyImplyLeading: false,
           elevation: 0,
@@ -56,7 +69,7 @@ class _reviewsPageState extends State<reviewsPage> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            widget.movie.name??" ",
+                            widget.movie.name,
                             textAlign: TextAlign.center,
                             style:
                             TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20),
@@ -65,7 +78,7 @@ class _reviewsPageState extends State<reviewsPage> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            widget.movie.release??" ",
+                            widget.movie.release,
                             textAlign: TextAlign.center,
                             style:
                             TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 17),
@@ -100,7 +113,7 @@ class _reviewsPageState extends State<reviewsPage> {
                           padding: const EdgeInsets.all(8),
                           shrinkWrap: true,
                           itemBuilder: (buildContext, index) =>
-                              reviewItem(reviewsRelated[index], context),
+                              reviewItem(reviewsRelated[index], reviewsRelated),
                           itemCount: reviewsRelated.length,
                         ),
                       );
@@ -116,7 +129,7 @@ class _reviewsPageState extends State<reviewsPage> {
                         ));
 
     }
-              )
+              ),
             ],
           ),
         ));

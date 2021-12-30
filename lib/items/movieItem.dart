@@ -4,7 +4,7 @@ import 'package:movies_reviews/screens/reviewsPage.dart';
 
 InkWell movieItem(Movie movieItem, context)
 {
-  int d = (movieItem.duration! * 60).toInt();
+  int d = (movieItem.duration * 60).toInt();
   return InkWell(
     onTap: (){
       Navigator.push(
@@ -27,7 +27,7 @@ InkWell movieItem(Movie movieItem, context)
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              movieItem.name??" ",
+              movieItem.name,
               textAlign: TextAlign.start,
               style:
               TextStyle(fontWeight: FontWeight.bold, color: Colors.blueGrey, fontSize: 17),
@@ -45,7 +45,7 @@ InkWell movieItem(Movie movieItem, context)
               ),
 
               Expanded(
-                child: Text(movieItem.release??" ",
+                child: Text(movieItem.release,
                   textAlign: TextAlign.center,
                   style:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 14),
