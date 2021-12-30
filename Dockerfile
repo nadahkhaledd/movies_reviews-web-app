@@ -1,6 +1,6 @@
 # Install dependencies
-FROM google/dart:latest AS build-env
-RUN apt-get update 
+FROM debian:latest AS build-env
+RUN apt-get update
 RUN apt-get install -y curl git wget unzip libgconf-2-4 gdb libstdc++6 libglu1-mesa fonts-droid-fallback lib32stdc++6 python3 psmisc
 RUN apt-get clean
 

@@ -16,8 +16,6 @@ class _reviewItemState extends State<reviewItem> {
   @override
   Widget build(BuildContext context) {
       return Container(
-          //height: MediaQuery.of(context).size.height / 6,
-          //width: MediaQuery.of(context).size.width / 4,
           decoration:
           BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black54))),
           child: Row(
