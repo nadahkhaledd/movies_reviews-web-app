@@ -5,7 +5,7 @@ import 'package:movies_reviews/models/Review.dart';
 import 'package:movies_reviews/models/ReviewsResponse.dart';
 
 Future<MoviesResponse> getAllMovies() async {
-  final uri = Uri.http("kerols843-001-site1.gtempurl.com", "/api/movies/GetAllMovies");
+  final uri = Uri.http("localhost:63575", "/api/movies/GetAllMovies");
   final response = await http.get(uri);
   print("\n" + response.body);
   if (response.statusCode == 200) {
@@ -16,7 +16,7 @@ Future<MoviesResponse> getAllMovies() async {
 }
 
 Future<ReviewsResponse> getAllReviews() async {
-  final uri = Uri.http("kerols843-001-site1.gtempurl.com", "/api/Review/GetAllReviews");
+  final uri = Uri.http("localhost:63575", "/api/Review/GetAllReviews");
   final response = await http.get(uri);
   print("\n" + response.body);
   if (response.statusCode == 200) {
@@ -27,7 +27,7 @@ Future<ReviewsResponse> getAllReviews() async {
 }
 
 Future<Review> updateReview(Review review) async {
-  final uri = Uri.http("kerols843-001-site1.gtempurl.com", "/api/Review/put");
+  final uri = Uri.http("localhost:63575", "/api/Review/put");
   final response = await http.put(uri, body: jsonEncode(review), headers: <String, String>{
     'Content-Type': 'application/json; charset=UTF-8'});
 
@@ -43,7 +43,7 @@ Future<Review> updateReview(Review review) async {
 
 Future<Review> addReview(Review review) async
 {
-  final uri = Uri.http("kerols843-001-site1.gtempurl.com", "/api/Review/post");
+  final uri = Uri.http("localhost:63575", "/api/Review/post");
   final response = await http.post(uri, body: jsonEncode(review), headers: <String, String>{
     'Content-Type': 'application/json; charset=UTF-8'});
 
@@ -57,7 +57,7 @@ Future<Review> addReview(Review review) async
 }
 
 Future<Review> deleteReview(int id) async{
-  final uri = Uri.http("kerols843-001-site1.gtempurl.com", "/api/Review/delete", {"id": id.toString()});
+  final uri = Uri.http("localhost:63575", "/api/Review/delete", {"id": id.toString()});
   final response = await http.delete(uri, headers: <String, String>{
   'Content-Type': 'application/json; charset=UTF-8'});
 
@@ -72,11 +72,3 @@ Future<Review> deleteReview(int id) async{
       throw Exception(response.body);
     }
 }
-
-
-
-
-
-
-
-
